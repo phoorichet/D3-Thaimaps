@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+/* CSS goes here. */
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script>
+
+/* JavaScript goes here. */
+var width = 780,
+    height = 900;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+
+d3.json("tha-adm0.json", function(error, tha) {
+  if (error) return console.error(error);
+
+  console.log(tha);
+
+  // var projection = d3.geo.mercator()
+  //     .center([103, 12])
+  //     .scale(2500)
+  //     .translate([width / 2, height / 2]);
+
+  var projection = d3.geo.albers()
+    .center([0, 13.7])
+    .rotate([-100.52, 0])
+    .parallels([5, 21])
+    .scale(3000)
+    .translate([width / 2, height / 2]);
+
+  var path = d3.geo.path()
+      .projection(projection);
+
+  var subunits = topojson.feature(tha, tha.objects.THA_adm0)
+  svg.append("path")
+      .datum(subunits)
+      .attr("d", path);
+});
+
+</script>
+
