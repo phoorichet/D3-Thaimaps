@@ -3,6 +3,7 @@
 <style>
 
 /* CSS goes here. */
+.subunit { fill: #dcd; }
 
 </style>
 <body>
@@ -40,9 +41,18 @@ d3.json("tha-adm0.json", function(error, tha) {
       .projection(projection);
 
   var subunits = topojson.feature(tha, tha.objects.THA_adm0)
-  svg.append("path")
-      .datum(subunits)
+
+  // svg.append("path")
+  //     .datum(subunits)
+  //     .attr("d", path);
+
+
+  svg.selectAll(".subunit")
+      .data(subunits.features)
+    .enter().append("path")
+      .attr("class", function(d) {console.log(d); return "subunit " + d.id; })
       .attr("d", path);
+
 });
 
 </script>
