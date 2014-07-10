@@ -1,5 +1,7 @@
 #!/bin/bash
-echo 'THA adm1..'
+echo "##############################################################"
+echo "#### A script to generate GeoJSON files for Thailand map #####"
+echo "##############################################################"
 
 FILE_PLACES='maps/places.json'
 FILE_POPULATED='ne_10m_populated_places/ne_10m_populated_places.shp'
@@ -37,7 +39,8 @@ gen_maps()
   echo "Generating TopoJSON from GeoJSON file.. $tmp_file"
   topojson -o $2 --id-property ID_0 --properties -- $tmp_file $FILE_PLACES
   echo "output.. $2"
-  echo 'Done..!\n'
+  echo "Done..!"
+  echo ""
 
   if [ -e $tmp_file ]
   then
@@ -48,6 +51,10 @@ gen_maps()
 
 
 ## MAIN ###
+
+# Inflate the zip file
+echo "Inflating zip file.."
+unzip -o THA_adm.zip -d THA_adm
 gen_places
 
 
