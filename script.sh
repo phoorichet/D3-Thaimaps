@@ -26,7 +26,7 @@ gen_maps()
     rm $2
   fi
 
-  tmp_file="maps/tmp_file.json"
+  tmp_file="maps/subunits.json"
   if [ -e $tmp_file ]
   then
     rm $tmp_file
@@ -56,15 +56,15 @@ FILE2="maps/tha_adm0.json"
 gen_maps $FILE1 $FILE2
 
 FILE1="THA_adm/THA_adm1.shp"
-FILE2="maps/tha_adm1.json"
+FILE2="maps/tha_provinces.json"
 gen_maps $FILE1 $FILE2
 
 FILE1="THA_adm/THA_adm2.shp"
-FILE2="maps/tha_adm2.json"
+FILE2="maps/tha_amphers.json"
 gen_maps $FILE1 $FILE2
 
 FILE1="THA_adm/THA_adm3.shp"
-FILE2="maps/tha_adm3.json"
+FILE2="maps/tha_districts.json"
 gen_maps $FILE1 $FILE2
 
 # FILE1='maps/tha_adm1.json'

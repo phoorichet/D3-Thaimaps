@@ -5,7 +5,9 @@
 /* CSS goes here. */
 .subunit.Province { fill: #dcd; }
 .subunit.Lake { fill: #fff; }
-.subunit.Province.id27 { fill: #aaa; }
+.subunit.Province.id27 { fill: #E80C96; }
+.subunit.Province.id7 { fill: #790CE8; }
+
 
 .subunit-boundary {
   fill: none;
@@ -181,9 +183,10 @@ d3.json("tha_adm1.json", function(error, tha) {
 
   function clicked(d) {
     // console.log(d); 
-    // var name = d.properties.NAME_1;
+    var name = d.properties.NAME_1;
     var selected = d;
-    // console.log(name);
+    console.log(name);
+    console.log(d);
     svg.selectAll('.subunit')
       .classed('active', function(d) {  return selected === d; } );
   }
